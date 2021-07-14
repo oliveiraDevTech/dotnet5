@@ -32,9 +32,14 @@ namespace Domain.Cadastro.EstoqueAgreggate
         public DateTime Fabricacao { get; private set; }
         public DateTime? Vencimento { get; private set; }
 
-        public Contract<Notification> Contract()
+        public static Contract<Notification> Contract()
         {
             return new Contract<Notification>();
+        }
+
+        protected override void RuleValidate()
+        {
+            throw new NotImplementedException();
         }
 
         public virtual void Validate()

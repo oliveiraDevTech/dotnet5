@@ -3,7 +3,6 @@ using Domain.Cadastro.EstoqueAgreggate.Enumerators;
 using Flunt.Notifications;
 using Flunt.Validations;
 using System;
-using Flunt.Validations;
 
 namespace Domain.Cadastro.EstoqueAgreggate
 {
@@ -20,14 +19,18 @@ namespace Domain.Cadastro.EstoqueAgreggate
         public TipoMovimento Tipo { get; private set; }
         public DateTime Lancamento { get; private set; }
 
-        public Contract<Notification> Contract()
+        public static Contract<Notification> Contract()
         {
             return new Contract<Notification>();
         }
-
         public virtual void Validate()
         {
             AddNotifications(Contract());
+        }
+
+        protected override void RuleValidate()
+        {
+            throw new NotImplementedException();
         }
     }
 }

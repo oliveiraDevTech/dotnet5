@@ -54,6 +54,11 @@ namespace Domain.Cadastro.EnderecoAggregate
                                  //.HasMaxLen(Referencia, 250, nameof(Referencia), "Bairro maior que 250");
         }
 
+        protected override void RuleValidate()
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual void Validate()
         {
             AddNotifications(Contract());

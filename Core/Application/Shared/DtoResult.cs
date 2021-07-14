@@ -7,8 +7,8 @@ namespace Core.Application.Shared
         public IReadOnlyCollection<Dto> Values => _dtos;
         public IReadOnlyCollection<string> Errors => _errors;
         public bool IsValid => _IsValid;
-        private List<Dto> _dtos;
-        private List<string> _errors;
+        private readonly List<Dto> _dtos;
+        private readonly List<string> _errors;
         private bool _IsValid;
 
         public DtoResult()

@@ -9,8 +9,8 @@ namespace Core.Application.Shared
         public bool IsValid => _IsValid;
 
         private bool _IsValid;
-        private List<string> _errors;
-        private List<string> _asserts;
+        private readonly List<string> _errors;
+        private readonly List<string> _asserts;
 
         public MessageResult()
         {

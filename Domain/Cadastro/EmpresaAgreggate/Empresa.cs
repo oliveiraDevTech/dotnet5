@@ -1,9 +1,9 @@
 ﻿using Core.Domain.Entity;
 using Domain.Cadastro.EmpresaAgreggate.Enumerators;
+using Domain.Cadastro.EmpresaAgreggate.Rules;
 using Domain.Cadastro.EmpresaAgreggate.ValueObjects;
 using Domain.Cadastro.EnderecoAggregate;
-using Flunt.Notifications;
-using Flunt.Validations;
+using System.Linq;
 
 namespace Domain.Cadastro.EmpresaAgreggate
 {
@@ -30,24 +30,23 @@ namespace Domain.Cadastro.EmpresaAgreggate
         public Endereco Endereco { get; protected set; }
         public TipoEmpresa Tipo { get; protected set; }
 
+        protected override void RuleValidate()
+        {
+            foreach (var regra in ListaRegrasEmpresa.ObterRegras().Where(x => x.DeveExecutar(this)))
+            {
+                regra.Validar(this);
+                AddNotifications(regra.Notifications);
+            }
+        }
+
         public virtual void Validate()
         {
-            AddNotifications(Contract());
+            RuleValidate();
             AddNotifications(Endereco.Notifications);
             AddNotifications(Cnpj.Contract());
 
             if (Tipo.Equals(TipoEmpresa.Filial))
                 AddNotification(nameof(Tipo), "Tipo da empresa não pode ser filial");
-        }
-
-        public Contract<Notification> Contract()
-        {
-            return new Contract<Notification>().IsNotNullOrEmpty(Nome, nameof(Nome), "Nome da Empresa não pode ser nulo")
-                                           //.HasMinLen(Nome, 5, nameof(Nome), "Nome da Empresa menor que 5")
-                                           //.HasMaxLen(Nome, 150, nameof(Nome), "Nome da Empresa maior que 150")
-                                           .IsNotNullOrEmpty(RazaoSocial, nameof(RazaoSocial), "Razao Social da Empresa não pode ser nulo");
-                                           //.HasMinLen(RazaoSocial, 5, nameof(RazaoSocial), "Razao Social da Empresa menor que 5")
-                                           //.HasMaxLen(RazaoSocial, 150, nameof(RazaoSocial), "Razao Social da Empresa maior que 150");
         }
     }
 }

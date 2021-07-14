@@ -3,6 +3,7 @@ using Domain.Cadastro.EmpresaAgreggate;
 using Domain.Cadastro.EmpresaAgreggate.Enumerators;
 using Domain.Cadastro.EmpresaAgreggate.ValueObjects;
 using Domain.Cadastro.EnderecoAggregate;
+using System;
 
 namespace Infrastructure.Builder.Cadastro
 {
@@ -25,6 +26,11 @@ namespace Infrastructure.Builder.Cadastro
 
         public EmpresaBuilder(Cnpj cnpj, string razaoSocial, string nomeEmpresa, Endereco endereco, TipoEmpresa tipoEmpresa)
         {
+            if (razaoSocial is null)
+            {
+                throw new ArgumentNullException(nameof(razaoSocial));
+            }
+
             _cnpj = cnpj;
             _razaoSocial = nomeEmpresa;
             _nomeEmpresa = nomeEmpresa;
@@ -62,6 +68,6 @@ namespace Infrastructure.Builder.Cadastro
             return this;
         }
 
-        public Empresa Build() => new Empresa(_cnpj, _razaoSocial, _nomeEmpresa, _endereco, _tipoEmpresa);
+        public Empresa Build() => new(_cnpj, _razaoSocial, _nomeEmpresa, _endereco, _tipoEmpresa);
     }
 }

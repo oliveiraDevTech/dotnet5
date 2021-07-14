@@ -3,7 +3,6 @@ using Domain.Cadastro.ProdutoAggregate.Enumerators;
 using Domain.Cadastro.ProdutoAggregate.ValueObject;
 using Flunt.Notifications;
 using Flunt.Validations;
-using Flunt.Validations;
 
 namespace Domain.Cadastro.ProdutoAggregate
 {
@@ -53,6 +52,11 @@ namespace Domain.Cadastro.ProdutoAggregate
             AddNotifications(Peso.Contract());
             AddNotifications(Medida.Contract());
             AddNotifications(Preco.Contract());
+        }
+
+        protected override void RuleValidate()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

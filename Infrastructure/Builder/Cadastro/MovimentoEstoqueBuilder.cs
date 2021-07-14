@@ -33,6 +33,6 @@ namespace Infrastructure.Builder.Cadastro
             return this;
         }
 
-        public MovimentoEstoque Build() => new MovimentoEstoque(_tipo, _lancamento);
+        public MovimentoEstoque Build() => new(_tipo, _lancamento);
     }
 }

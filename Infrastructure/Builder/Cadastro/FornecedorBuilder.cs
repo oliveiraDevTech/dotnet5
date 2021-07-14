@@ -34,6 +34,6 @@ namespace Infrastructure.Builder.Cadastro
             return this;
         }
 
-        public Fornecedor Build() => new Fornecedor(_empresa, _produtos);
+        public Fornecedor Build() => new(_empresa, _produtos);
     }
 }

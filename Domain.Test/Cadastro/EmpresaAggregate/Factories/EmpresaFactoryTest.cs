@@ -15,14 +15,14 @@ namespace Domain.Test.Cadastro.EmpresaAggregate.Factories
         [Fact]
         public void CriarEmpresa()
         {
-            Empresa matriz;
-            Cnpj cnpj;
-            string razaoSocial;
-            string nomeEmpresa;
-            Endereco endereco;
-            TipoEmpresa tipoEmpresa;
+            //Empresa matriz;
+            //Cnpj cnpj;
+            //string razaoSocial;
+            //string nomeEmpresa;
+            //Endereco endereco;
+            //TipoEmpresa tipoEmpresa;
 
-            var empresa = new EmpresaFactory();
+            //var empresa = new EmpresaFactory();
         }
 
     }

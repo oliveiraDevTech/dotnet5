@@ -37,6 +37,6 @@ namespace Domain.Cadastro.ProdutoAggregate.ValueObject
             throw new NotImplementedException();
         }
 
-        private decimal ArredondarDuasCasas(decimal valor) => Math.Round(valor, 2, MidpointRounding.AwayFromZero);
+        private static decimal ArredondarDuasCasas(decimal valor) => Math.Round(valor, 2, MidpointRounding.AwayFromZero);
     }
 }

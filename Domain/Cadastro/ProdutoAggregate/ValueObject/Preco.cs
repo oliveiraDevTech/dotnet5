@@ -45,6 +45,8 @@ namespace Domain.Cadastro.ProdutoAggregate.ValueObject
 
                 case Moeda.Dolar:
                     return string.Format(CultureInfo.GetCultureInfo("en-US"), "US$ {0:#.###,##}", Valor);
+                default:
+                    break;
             }
 
             return string.Format(CultureInfo.GetCultureInfo("pt-BR"), "R$ {0:#,###.##}", Valor);

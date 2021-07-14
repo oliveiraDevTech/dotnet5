@@ -21,15 +21,21 @@ namespace Domain.Cadastro.EmpresaAgreggate
 
         public override void Validate()
         {
-            AddNotifications(base.Contract());
+            RuleValidate();
+
             AddNotifications(Endereco.Notifications);
             AddNotifications(Cnpj.Contract());
-            AddNotifications(Contract());
+            AddNotifications(new Contract<Notification>());
         }
 
-        public new Contract<Notification> Contract()
+        protected override void RuleValidate()
         {
-            return new Contract<Notification>().IsNotNull(Matriz, nameof(Matriz), "Matriz da Filial não pode ser nulo");
+            base.RuleValidate();
         }
+
+        //public new Contract<Notification> Contract()
+        //{
+        //    return new Contract<Notification>().IsNotNull(Matriz, nameof(Matriz), "Matriz da Filial não pode ser nulo");
+        //}
     }
 }

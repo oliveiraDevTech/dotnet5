@@ -11,7 +11,7 @@ namespace Core.Domain.Entity
         }
 
         protected Entity(TId id) => Id = id;
-
+        protected abstract void RuleValidate();
         public virtual TId Id { get; protected set; }
         public virtual ICollection<IDomainEvent> Events { get; }
 
@@ -48,6 +48,16 @@ namespace Core.Domain.Entity
                     }
                 }
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Entity<TId>);
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
         }
     }
 }

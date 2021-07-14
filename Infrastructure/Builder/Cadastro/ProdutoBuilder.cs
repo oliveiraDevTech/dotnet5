@@ -78,6 +78,6 @@ namespace Infrastructure.Builder.Cadastro
             return this;
         }
 
-        public Produto Build() => new Produto(_nome, _codigo, _tipo, _descricao, _peso, _medida, _preco);
+        public Produto Build() => new(_nome, _codigo, _tipo, _descricao, _peso, _medida, _preco);
     }
 }
