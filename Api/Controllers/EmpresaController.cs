@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Api.Controllers
 {
     [Route("v1/empresa")]
-    public class EmpresaController : ControllerBase, IGenericController<EmpresaDto, long>
+    [ApiController]
+    public class EmpresaController : ControllerBase//, IGenericController<EmpresaDto, long>
     {
         private readonly IEmpresaService _empresaService;
 
