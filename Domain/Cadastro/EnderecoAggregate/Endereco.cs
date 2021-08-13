@@ -1,8 +1,10 @@
 ﻿using Core.Domain.Entity;
 using Core.Domain.Enumerator;
+using Domain.Cadastro.EnderecoAggregate.Rules.RulesList;
 using Flunt.Notifications;
 using Flunt.Validations;
 using System;
+using System.Linq;
 
 namespace Domain.Cadastro.EnderecoAggregate
 {
@@ -33,18 +35,7 @@ namespace Domain.Cadastro.EnderecoAggregate
 
         public Contract<Notification> Contract()
         {
-            return new Contract<Notification>().IsNotNullOrEmpty(Pais, nameof(Pais), "Pais inválido")
-                                 //.HasMinLen(Pais, 2, nameof(Pais), "Pais precisa ter no mínimo 2 caracteres")
-                                 //.HasMaxLen(Pais, 50, nameof(Pais), "Pais precisa ter no máximo 50 caracteres")
-                                 .IsNotNullOrEmpty(Cidade, nameof(Cidade), "Cidade não pode ser nulo")
-                                 //.HasMinLen(Cidade, 2, nameof(Cidade), "Cidade menor que 5")
-                                 //.HasMaxLen(Cidade, 100, nameof(Cidade), "Cidade maior que 150")
-                                 .IsNotNullOrEmpty(Bairro, nameof(Bairro), "Bairro não pode ser nulo")
-                                 //.HasMinLen(Bairro, 2, nameof(Bairro), "Bairro menor que 2")
-                                 //.HasMaxLen(Bairro, 100, nameof(Bairro), "Bairro maior que 100")
-                                 .IsNotNullOrEmpty(Rua, nameof(Rua), "Rua não pode ser nulo")
-                                 //.HasMinLen(Rua, 2, nameof(Rua), "Rua menor que 2")
-                                 //.HasMaxLen(Rua, 150, nameof(Rua), "Rua maior que 150")
+            return new Contract<Notification>()
                                  .AreNotEquals(0, Numero, nameof(Numero), "Numero não pode ser 0")
                                  .IsNotNullOrEmpty(Complemento, nameof(Complemento), "Complemento não pode ser nulo")
                                  //.HasMinLen(Complemento, 2, nameof(Complemento), "Complemento menor que 2")
@@ -56,7 +47,11 @@ namespace Domain.Cadastro.EnderecoAggregate
 
         protected override void RuleValidate()
         {
-            throw new NotImplementedException();
+            foreach (var regra in EnderecoRulesList.ObterRegras().Where(x => x.DeveExecutar(this)))
+            {
+                regra.Validar(this);
+                AddNotifications(regra.Notifications);
+            }
         }
 
         public virtual void Validate()
