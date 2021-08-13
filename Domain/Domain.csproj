@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Cadastro\EnderecoAggregate\Endereco\" />
+  </ItemGroup>
+
 </Project>

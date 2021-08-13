@@ -1,6 +1,7 @@
 ﻿using Application.Cadastro.Dto;
 using Application.Cadastro.Modules.EmpresaModule.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,13 +9,15 @@ namespace Api.Controllers
 {
     [Route("v1/empresa")]
     [ApiController]
-    public class EmpresaController : ControllerBase//, IGenericController<EmpresaDto, long>
+    public class EmpresaController : ControllerBase, IGenericController<EmpresaDto, long>
     {
         private readonly IEmpresaService _empresaService;
+        private readonly ILogger<EmpresaController> _logger;
 
-        public EmpresaController(IEmpresaService empresaService)
+        public EmpresaController(IEmpresaService empresaService, ILogger<EmpresaController> logger)
         {
             _empresaService = empresaService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -28,6 +31,7 @@ namespace Api.Controllers
             }
 
             return Ok(retorno);
+
         }
 
         [HttpGet]

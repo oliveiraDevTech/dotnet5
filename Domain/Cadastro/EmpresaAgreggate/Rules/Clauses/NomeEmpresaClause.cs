@@ -3,7 +3,7 @@ using Flunt.Validations;
 
 namespace Domain.Cadastro.EmpresaAgreggate.Rules
 {
-    public class NomeEmpresaRule : EmpresaRule
+    public class NomeEmpresaClause : EmpresaRule
     {
         private const string Mensagem = "Nome da Empresa não pode ser nulo";
         private const string Mensagem2 = "Nome da Empresa menor que 5";

@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace Domain.Cadastro.EmpresaAgreggate
 {
-    public class Empresa : Entity<long>, IEntity
+    public abstract class Empresa : Entity<long>, IEntity
     {
-        public Empresa()
+        protected Empresa()
         {
         }
 

@@ -18,7 +18,7 @@ namespace Infrastructure.Builder.Cadastro
 
         public FornecedorBuilder()
         {
-            _empresa = new EmpresaBuilder().Build();
+            _empresa = new MatrizBuilder().Build();
             _produtos = new List<Produto>() { new ProdutoBuilder().Build() };
         }
 

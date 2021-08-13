@@ -1,26 +1,25 @@
 ﻿using Domain.Cadastro.EmpresaAgreggate.Enumerators;
-using Domain.Cadastro.EmpresaAgreggate.Rules;
 using Domain.Cadastro.EmpresaAgreggate.ValueObjects;
 using Domain.Cadastro.EnderecoAggregate;
 using Flunt.Notifications;
 using Flunt.Validations;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace Domain.Cadastro.EmpresaAgreggate
 {
-    public class Filial : Empresa
+    public class Matriz : Empresa
     {
-        protected Filial()
+        protected Matriz()
         {
 
         }
-        public Matriz Matriz { get; protected set; }
 
-        public Filial(Matriz matriz, Cnpj cnpj, string razaoSocial, string nomeEmpresa, Endereco endereco) : base(cnpj, razaoSocial, nomeEmpresa, endereco, TipoEmpresa.Filial)
+        public IEnumerable<Filial> Filiais { get; protected set; }
+
+        public Matriz(IEnumerable<Filial> filiais, Cnpj cnpj, string razaoSocial, string nome, Endereco endereco, TipoEmpresa tipo) : base(cnpj, razaoSocial, nome, endereco, tipo)
         {
-            Matriz = matriz;
+            Filiais = filiais;
         }
-
         public override void Validate()
         {
             RuleValidate();
@@ -33,12 +32,6 @@ namespace Domain.Cadastro.EmpresaAgreggate
         protected override void RuleValidate()
         {
             base.RuleValidate();
-
-            foreach (var regra in FilialRulesList.ObterRegras().Where(x => x.DeveExecutar(this)))
-            {
-                regra.Validar(this);
-                AddNotifications(regra.Notifications);
-            }
         }
     }
 }

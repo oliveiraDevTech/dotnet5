@@ -6,13 +6,18 @@ using Domain.Cadastro.EnderecoAggregate;
 
 namespace Infrastructure.Builder.Cadastro
 {
-    public class FilialBuilder : EmpresaBuilder
+    public class FilialBuilder
     {
-        private Empresa _matriz;
+        private Matriz _matriz;
+        protected Cnpj _cnpj;
+        protected string _razaoSocial;
+        protected string _nomeEmpresa;
+        protected Endereco _endereco;
+        protected TipoEmpresa _tipoEmpresa;
 
         public FilialBuilder()
         {
-            _matriz = new EmpresaBuilder().Build();
+            _matriz = new MatrizBuilder().Build();
             _cnpj = new Cnpj("12345678901234");
             _razaoSocial = "Filial da Empresa Brasileira";
             _nomeEmpresa = "Filial Brasil Corp";
@@ -20,7 +25,7 @@ namespace Infrastructure.Builder.Cadastro
             _tipoEmpresa = TipoEmpresa.Filial;
         }
 
-        public FilialBuilder(Empresa matriz, Cnpj cnpj, string razaoSocial, string nomeEmpresa, Endereco endereco) : base(cnpj, razaoSocial, nomeEmpresa, endereco, TipoEmpresa.Filial)
+        public FilialBuilder(Matriz matriz, Cnpj cnpj, string razaoSocial, string nomeEmpresa, Endereco endereco)
         {
             _matriz = matriz;
             _cnpj = cnpj;
@@ -30,12 +35,12 @@ namespace Infrastructure.Builder.Cadastro
             _tipoEmpresa = TipoEmpresa.Filial;
         }
 
-        public FilialBuilder ComMatriz(Empresa matriz)
+        public FilialBuilder ComMatriz(Matriz matriz)
         {
             _matriz = matriz;
             return this;
         }
 
-        public new Filial Build() => new Filial(_matriz, _cnpj, _razaoSocial, _nomeEmpresa, _endereco);
+        public Filial Build() => new Filial(_matriz, _cnpj, _razaoSocial, _nomeEmpresa, _endereco);
     }
 }

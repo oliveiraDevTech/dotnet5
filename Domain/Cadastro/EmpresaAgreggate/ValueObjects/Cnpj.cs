@@ -15,7 +15,7 @@ namespace Domain.Cadastro.EmpresaAgreggate.ValueObjects
 
         public Contract<Notification> Contract()
         {
-            return new Contract<Notification>().IsNotNull(Codigo, nameof(Codigo), "Codigo do CNPJ é inválido");
+            return new Contract<Notification>();
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

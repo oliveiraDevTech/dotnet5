@@ -18,7 +18,7 @@ namespace Domain.Test.Agregattes.EmpresaAgreggates
         {
             //Arrange
             var _cnpj = new Cnpj(cnpj);
-            var sut = new EmpresaBuilder().ComCnpj(_cnpj).Build();
+            var sut = new MatrizBuilder().ComCnpj(_cnpj).Build();
             //Act
             var result = !sut.IsValid;
             //Assert
@@ -34,7 +34,7 @@ namespace Domain.Test.Agregattes.EmpresaAgreggates
         {
             //Arrange
             var _cnpj = new Cnpj(cnpj);
-            var sut = new EmpresaBuilder().ComCnpj(_cnpj).Build();
+            var sut = new MatrizBuilder().ComCnpj(_cnpj).Build();
             //Act
             var result = sut.IsValid;
             //Assert
@@ -51,7 +51,7 @@ namespace Domain.Test.Agregattes.EmpresaAgreggates
         public void CriarEmpresa_Quando_NomeEmpresaInIsValido_Deve_Falhar(string nomeEmpresa)
         {   
             //Arrange
-            var sut = new EmpresaBuilder().ComNomeEmpresa(nomeEmpresa).Build();
+            var sut = new MatrizBuilder().ComNomeEmpresa(nomeEmpresa).Build();
             //Act
             var result = !sut.IsValid;
             //Assert
@@ -64,7 +64,7 @@ namespace Domain.Test.Agregattes.EmpresaAgreggates
         {
             //Arrange
             var name = new Faker().Name.FullName();
-            var sut = new EmpresaBuilder().ComNomeEmpresa(name).Build();
+            var sut = new MatrizBuilder().ComNomeEmpresa(name).Build();
             //Act
             var result = sut.IsValid;
             //Assert

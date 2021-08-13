@@ -3,7 +3,7 @@ using Flunt.Validations;
 
 namespace Domain.Cadastro.EmpresaAgreggate.Rules
 {
-    public class RazaoSocialRule : EmpresaRule
+    public class RazaoSocialClause : EmpresaRule
     {
         private const string Mensagem = "Razao Social da Empresa não pode ser nulo";
         private const string Mensagem2 = "Razao Social da Empresa menor que 5";

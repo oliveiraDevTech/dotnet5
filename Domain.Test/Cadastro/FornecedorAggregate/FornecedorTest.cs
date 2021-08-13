@@ -31,7 +31,7 @@ namespace Domain.Test.Agregates.FornecedorAgreggate
         public void CriarFornecedor_Quando_ProdutoNulo_Deve_Falhar(List<Produto> produtos)
         {
             //Arrange
-            var empresa = new EmpresaBuilder().Build();
+            var empresa = new MatrizBuilder().Build();
             var sut = new FornecedorBuilder().ComEmpresa(empresa)
                                              .ComProdutos(produtos)
                                              .Build();
@@ -47,7 +47,7 @@ namespace Domain.Test.Agregates.FornecedorAgreggate
         {
             //Arrange
             var produtos = new List<Produto>() { new ProdutoBuilder().Build() };
-            var empresa = new EmpresaBuilder().Build();
+            var empresa = new MatrizBuilder().Build();
             var sut = new FornecedorBuilder().ComEmpresa(empresa)
                                              .ComProdutos(produtos)
                                              .Build();

@@ -1,14 +1,15 @@
-﻿using Flunt.Notifications;
+﻿using Core.Domain;
+using Flunt.Notifications;
 using System.Collections.Generic;
 
 namespace Domain.Cadastro.EmpresaAgreggate
 {
-    public abstract class EmpresaRule : Notifiable<Notification>, IEmpresaRule
+    public abstract class MatrizRule : Notifiable<Notification>, IRule<Matriz>
     {
         public void AddNotifications(IEnumerable<Notification> notifications) => base.AddNotifications((IReadOnlyCollection<Notification>)notifications);
 
-        public virtual bool DeveExecutar(Empresa empresa) => true;
+        public virtual bool DeveExecutar(Matriz matriz) => false;
 
-        public abstract void Validar(Empresa empresa);
+        public abstract void Validar(Matriz matriz);
     }
 }

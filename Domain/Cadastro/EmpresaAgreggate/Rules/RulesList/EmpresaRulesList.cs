@@ -4,12 +4,12 @@ namespace Domain.Cadastro.EmpresaAgreggate.Rules
 {
     public static class ListaRegrasEmpresa
     {
-        public static List<IEmpresaRule> ObterRegras()
+        public static List<EmpresaRule> ObterRegras()
         {
-            return new List<IEmpresaRule>
+            return new List<EmpresaRule>
             {
-                new NomeEmpresaRule(),
-                new RazaoSocialRule()
+                new NomeEmpresaClause(),
+                new RazaoSocialClause()
             };
         }
     }
