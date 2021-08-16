@@ -27,10 +27,5 @@ namespace Domain.Cadastro.EstoqueAgreggate
         {
             AddNotifications(Contract());
         }
-
-        protected override void RuleValidate()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

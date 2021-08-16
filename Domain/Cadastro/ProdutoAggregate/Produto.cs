@@ -53,10 +53,5 @@ namespace Domain.Cadastro.ProdutoAggregate
             AddNotifications(Medida.Contract());
             AddNotifications(Preco.Contract());
         }
-
-        protected override void RuleValidate()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

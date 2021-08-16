@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Domain.Cadastro.EmpresaAgreggate.Rules.Clauses;
+using System.Collections.Generic;
 
 namespace Domain.Cadastro.EmpresaAgreggate.Rules
 {
@@ -9,7 +10,9 @@ namespace Domain.Cadastro.EmpresaAgreggate.Rules
             return new List<EmpresaRule>
             {
                 new NomeEmpresaClause(),
-                new RazaoSocialClause()
+                new RazaoSocialClause(),
+                new CnpjClause(),
+                //new EnderecoClause()
             };
         }
     }

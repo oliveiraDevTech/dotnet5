@@ -11,9 +11,7 @@ namespace Domain.Cadastro.EstoqueAgreggate
 {
     public class Estoque : Entity<long>, IEntity
     {
-        public Estoque()
-        {
-        }
+        protected Estoque() { }
 
         public Estoque(Quantidade quantidade, Produto produto, Fornecedor fornecedor, IEnumerable<MovimentoEstoque> movimentos, DateTime fabricacao, DateTime? vencimento)
         {
@@ -35,11 +33,6 @@ namespace Domain.Cadastro.EstoqueAgreggate
         public static Contract<Notification> Contract()
         {
             return new Contract<Notification>();
-        }
-
-        protected override void RuleValidate()
-        {
-            throw new NotImplementedException();
         }
 
         public virtual void Validate()

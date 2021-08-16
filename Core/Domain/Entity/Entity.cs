@@ -11,7 +11,6 @@ namespace Core.Domain.Entity
         }
 
         protected Entity(TId id) => Id = id;
-        protected abstract void RuleValidate();
         public virtual TId Id { get; protected set; }
         public virtual ICollection<IDomainEvent> Events { get; }
 

@@ -38,10 +38,5 @@ namespace Domain.Cadastro.FornecedorAgreggate
             //TODO: ADICIONAR AS NOTIFICATIONS DE PRODUTOS
             //AddNotifications(Produtos.FirstOrDefault().Select(x => x.Notifications));
         }
-
-        protected override void RuleValidate()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

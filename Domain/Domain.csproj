@@ -13,4 +13,9 @@
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Cadastro\EstoqueAgreggate\Rules\Clauses\" />
+    <Folder Include="Cadastro\EstoqueAgreggate\Rules\RulesLists\" />
+  </ItemGroup>
+
 </Project>

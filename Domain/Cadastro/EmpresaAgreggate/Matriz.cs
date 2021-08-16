@@ -1,18 +1,15 @@
 ﻿using Domain.Cadastro.EmpresaAgreggate.Enumerators;
+using Domain.Cadastro.EmpresaAgreggate.Rules;
 using Domain.Cadastro.EmpresaAgreggate.ValueObjects;
 using Domain.Cadastro.EnderecoAggregate;
-using Flunt.Notifications;
-using Flunt.Validations;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain.Cadastro.EmpresaAgreggate
 {
     public class Matriz : Empresa
     {
-        protected Matriz()
-        {
-
-        }
+        protected Matriz() { }
 
         public IEnumerable<Filial> Filiais { get; protected set; }
 
@@ -22,16 +19,13 @@ namespace Domain.Cadastro.EmpresaAgreggate
         }
         public override void Validate()
         {
-            RuleValidate();
+            base.Validate();
 
-            AddNotifications(Endereco.Notifications);
-            AddNotifications(Cnpj.Contract());
-            AddNotifications(new Contract<Notification>());
-        }
-
-        protected override void RuleValidate()
-        {
-            base.RuleValidate();
+            foreach (var regra in MatrizRulesList.ObterRegras().Where(x => x.DeveExecutar(this)))
+            {
+                regra.Validar(this);
+                AddNotifications(regra.Notifications);
+            }
         }
     }
 }

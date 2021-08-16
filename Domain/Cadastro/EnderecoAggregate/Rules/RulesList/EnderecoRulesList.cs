@@ -13,7 +13,10 @@ namespace Domain.Cadastro.EnderecoAggregate.Rules.RulesList
                 new PaisClause(),
                 new CidadeClause(),
                 new BairroClause(),
-                new RuaClause()
+                new RuaClause(),
+                new ReferenciaClause(),
+                new NumeroClause(),
+                new ComplementoClause()
             };
         }
     }

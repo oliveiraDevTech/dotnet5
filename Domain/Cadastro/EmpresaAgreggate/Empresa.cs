@@ -9,9 +9,7 @@ namespace Domain.Cadastro.EmpresaAgreggate
 {
     public abstract class Empresa : Entity<long>, IEntity
     {
-        protected Empresa()
-        {
-        }
+        protected Empresa() { }
 
         public Empresa(Cnpj cnpj, string razaoSocial, string nome, Endereco endereco, TipoEmpresa tipo)
         {
@@ -30,23 +28,13 @@ namespace Domain.Cadastro.EmpresaAgreggate
         public Endereco Endereco { get; protected set; }
         public TipoEmpresa Tipo { get; protected set; }
 
-        protected override void RuleValidate()
+        public virtual void Validate()
         {
             foreach (var regra in ListaRegrasEmpresa.ObterRegras().Where(x => x.DeveExecutar(this)))
             {
                 regra.Validar(this);
                 AddNotifications(regra.Notifications);
             }
-        }
-
-        public virtual void Validate()
-        {
-            RuleValidate();
-            AddNotifications(Endereco.Notifications);
-            AddNotifications(Cnpj.Contract());
-
-            if (Tipo.Equals(TipoEmpresa.Filial))
-                AddNotification(nameof(Tipo), "Tipo da empresa não pode ser filial");
         }
     }
 }

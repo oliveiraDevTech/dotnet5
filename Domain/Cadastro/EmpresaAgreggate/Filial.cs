@@ -2,18 +2,13 @@
 using Domain.Cadastro.EmpresaAgreggate.Rules;
 using Domain.Cadastro.EmpresaAgreggate.ValueObjects;
 using Domain.Cadastro.EnderecoAggregate;
-using Flunt.Notifications;
-using Flunt.Validations;
 using System.Linq;
 
 namespace Domain.Cadastro.EmpresaAgreggate
 {
     public class Filial : Empresa
     {
-        protected Filial()
-        {
-
-        }
+        protected Filial() { }
         public Matriz Matriz { get; protected set; }
 
         public Filial(Matriz matriz, Cnpj cnpj, string razaoSocial, string nomeEmpresa, Endereco endereco) : base(cnpj, razaoSocial, nomeEmpresa, endereco, TipoEmpresa.Filial)
@@ -23,16 +18,7 @@ namespace Domain.Cadastro.EmpresaAgreggate
 
         public override void Validate()
         {
-            RuleValidate();
-
-            AddNotifications(Endereco.Notifications);
-            AddNotifications(Cnpj.Contract());
-            AddNotifications(new Contract<Notification>());
-        }
-
-        protected override void RuleValidate()
-        {
-            base.RuleValidate();
+            base.Validate();
 
             foreach (var regra in FilialRulesList.ObterRegras().Where(x => x.DeveExecutar(this)))
             {
