@@ -5,6 +5,6 @@ namespace Core.Domain
 {
     public interface IValueObject
     {
-        public Contract<Notification> Contract();
+        //public Contract<Notification> Contract();
     }
 }

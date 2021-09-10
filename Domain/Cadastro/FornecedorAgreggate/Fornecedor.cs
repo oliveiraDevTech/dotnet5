@@ -1,8 +1,6 @@
 ﻿using Core.Domain.Entity;
 using Domain.Cadastro.EmpresaAgreggate;
 using Domain.Cadastro.ProdutoAggregate;
-using Flunt.Notifications;
-using Flunt.Validations;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,25 +16,17 @@ namespace Domain.Cadastro.FornecedorAgreggate
             Validate();
         }
 
-        protected Fornecedor()
-        {
-        }
+        protected Fornecedor() { }
 
         public Empresa Empresa { get; private set; }
         public IEnumerable<Produto> Produtos { get; private set; }
 
-        public Contract<Notification> Contract()
-        {
-            return new Contract<Notification>().IsTrue(Empresa.IsValid, "Empresa", "Empresa vinculada ao Fornecedor apresenta problemas")
-                                 .IsTrue(Produtos.Any(x => x.IsValid), "Produtos", "Produtos Vinculados ao fornecedor apresentam problemas");
-        }
-
         public virtual void Validate()
         {
-            AddNotifications(Contract());
             AddNotifications(Empresa.Notifications);
-            //TODO: ADICIONAR AS NOTIFICATIONS DE PRODUTOS
-            //AddNotifications(Produtos.FirstOrDefault().Select(x => x.Notifications));
+
+            foreach (var notification in Produtos.Select(x => x.Notifications).Where(x => x.Any()))
+                AddNotifications(notification);
         }
     }
 }

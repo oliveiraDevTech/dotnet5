@@ -16,11 +16,6 @@ namespace Domain.Cadastro.ProdutoAggregate.ValueObject
             Valor = ArredondarDuasCasas(valor);
         }
 
-        public Contract<Notification> Contract()
-        {
-            return new Contract<Notification>().IsNotNull(Valor, nameof(Valor), "Valor do Peso é inválido");
-        }
-
         protected override IEnumerable<object> GetEqualityComponents()
         {
             throw new System.NotImplementedException();

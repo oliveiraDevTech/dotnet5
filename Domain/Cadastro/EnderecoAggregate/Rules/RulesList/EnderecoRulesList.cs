@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Domain.Cadastro.EnderecoAggregate.Rules.RulesList
 {
-    class EnderecoRulesList
+    public class EnderecoRulesList
     {
         public static List<EnderecoRule> ObterRegras()
         {

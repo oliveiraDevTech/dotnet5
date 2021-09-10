@@ -1,8 +1,6 @@
 ﻿using Core.Domain;
 using Domain.Cadastro.ProdutoAggregate.Enumerators;
 using DomainDrivenDesign.Core.Models;
-using Flunt.Notifications;
-using Flunt.Validations;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,17 +15,10 @@ namespace Domain.Cadastro.ProdutoAggregate.ValueObject
             Imposto = imposto;
         }
 
-        public Preco()
-        {
-        }
+        protected Preco(){}
 
         public decimal Valor { get; private set; }
         public Imposto Imposto { get; private set; }
-
-        public Contract<Notification> Contract()
-        {
-            return new Contract<Notification>().IsNotNull(Valor, nameof(Valor), "Valor do Peso é inválido");
-        }
 
         protected override IEnumerable<object> GetEqualityComponents()
         {

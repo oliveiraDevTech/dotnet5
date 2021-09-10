@@ -13,10 +13,10 @@ namespace Domain.Cadastro.EmpresaAgreggate.ValueObjects
         public string Codigo { get; }
         public string CodigoFormatado { get => CodigoFormatado; private set => CodigoFormatado = Codigo; }
 
-        public Contract<Notification> Contract()
-        {
-            return new Contract<Notification>();
-        }
+        //public Contract<Notification> Contract()
+        //{
+        //    return new Contract<Notification>();
+        //}
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
