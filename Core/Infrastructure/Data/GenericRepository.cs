@@ -18,7 +18,7 @@ namespace Core.Infrastructure.Data
 
         public async Task<IEnumerable<TEntity>> GetAll()
         {
-            return  await _dbContext.Set<TEntity>().ToListAsync();
+            return await _dbContext.Set<TEntity>().ToListAsync();
         }
 
         public async Task<TEntity> Get(TId id)

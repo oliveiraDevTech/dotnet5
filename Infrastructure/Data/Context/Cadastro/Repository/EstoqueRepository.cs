@@ -26,7 +26,6 @@ namespace Infrastructure.Data.Context.Cadastro.Repository
             return await Commit();
         }
 
-
         private Task<int> Commit() => DbContext.SaveChangesAsync();
     }
 }

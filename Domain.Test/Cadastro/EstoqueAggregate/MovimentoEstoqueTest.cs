@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Domain.Test.Cadastro.EstoqueAggregate
+﻿namespace Domain.Test.Cadastro.EstoqueAggregate
 {
-    class MovimentoEstoqueTest
+    internal class MovimentoEstoqueTest
     {
         //TODO: adicionar testes de movimento
     }

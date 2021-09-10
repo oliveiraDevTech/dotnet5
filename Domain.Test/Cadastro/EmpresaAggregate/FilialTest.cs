@@ -1,5 +1,4 @@
-﻿using Domain.Cadastro.EmpresaAgreggate.ValueObjects;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Infrastructure.Builder.Cadastro;
 using Xunit;
 
@@ -19,6 +18,5 @@ namespace Domain.Test.Cadastro.EmpresaAggregate
             //Assert
             result.Should().BeTrue();
         }
-
     }
 }

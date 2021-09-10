@@ -1,6 +1,6 @@
 ﻿using Core.Domain.Entity;
 using Domain.Cadastro.EmpresaAgreggate.Enumerators;
-using Domain.Cadastro.EmpresaAgreggate.Rules;
+using Domain.Cadastro.EmpresaAgreggate.Rules.RulesList;
 using Domain.Cadastro.EmpresaAgreggate.ValueObjects;
 using Domain.Cadastro.EnderecoAggregate;
 using System.Linq;
@@ -9,7 +9,9 @@ namespace Domain.Cadastro.EmpresaAgreggate
 {
     public abstract class Empresa : Entity<long>, IEntity
     {
-        protected Empresa() { }
+        protected Empresa()
+        {
+        }
 
         public Empresa(Cnpj cnpj, string razaoSocial, string nome, Endereco endereco, TipoEmpresa tipo)
         {

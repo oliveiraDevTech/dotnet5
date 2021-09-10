@@ -15,7 +15,9 @@ namespace Domain.Cadastro.ProdutoAggregate.ValueObject
             Ipi = ArredondarDuasCasas(ipi);
         }
 
-        protected Imposto(){}
+        protected Imposto()
+        {
+        }
 
         public decimal Pis { get; private set; }
         public decimal Cofins { get; private set; }

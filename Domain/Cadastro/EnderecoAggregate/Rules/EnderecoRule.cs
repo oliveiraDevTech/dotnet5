@@ -1,9 +1,8 @@
 ﻿using Core.Domain;
-using Domain.Cadastro.EnderecoAggregate;
 using Flunt.Notifications;
 using System.Collections.Generic;
 
-namespace Domain.Cadastro.EmpresaAgreggate
+namespace Domain.Cadastro.EnderecoAggregate.Rules
 {
     public abstract class EnderecoRule : Notifiable<Notification>, IRule<Endereco>
     {

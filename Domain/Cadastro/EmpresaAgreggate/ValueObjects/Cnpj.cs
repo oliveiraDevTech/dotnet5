@@ -1,7 +1,5 @@
 ﻿using Core.Domain;
 using DomainDrivenDesign.Core.Models;
-using Flunt.Notifications;
-using Flunt.Validations;
 using System.Collections.Generic;
 
 namespace Domain.Cadastro.EmpresaAgreggate.ValueObjects

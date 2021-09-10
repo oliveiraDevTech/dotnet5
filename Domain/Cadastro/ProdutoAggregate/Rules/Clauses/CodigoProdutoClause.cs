@@ -3,7 +3,7 @@ using Flunt.Validations;
 
 namespace Domain.Cadastro.ProdutoAggregate.Rules.Clauses
 {
-    class CodigoProdutoClause : ProdutoRule
+    internal class CodigoProdutoClause : ProdutoRule
     {
         public override void Validar(Produto produto)
         {

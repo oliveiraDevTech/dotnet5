@@ -8,6 +8,5 @@ namespace Application.Cadastro.Modules.EstoqueModule.Command
     {
         internal EstoqueDto EstoqueDto { get; set; }
         internal bool Perda { get; set; }
-
     }
 }

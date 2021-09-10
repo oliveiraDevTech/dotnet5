@@ -1,5 +1,4 @@
-﻿using Domain.Cadastro.EmpresaAgreggate;
-using Flunt.Notifications;
+﻿using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Domain.Cadastro.EnderecoAggregate.Rules.Clauses
@@ -9,6 +8,7 @@ namespace Domain.Cadastro.EnderecoAggregate.Rules.Clauses
         private const string Mensagem = "Pais inválido";
         private const string Mensagem2 = "Pais precisa ter no mínimo 2 caracteres";
         private const string Mensagem3 = "Pais precisa ter no máximo 50 caracteres";
+
         public override void Validar(Endereco endereco)
         {
             AddNotifications(new Contract<Notification>().IsNotNullOrEmpty(endereco.Pais, nameof(endereco.Pais), Mensagem)

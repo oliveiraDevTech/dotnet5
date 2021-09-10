@@ -2,8 +2,6 @@
 using Domain.Cadastro.ProdutoAggregate.Enumerators;
 using Domain.Cadastro.ProdutoAggregate.Rules.RulesList;
 using Domain.Cadastro.ProdutoAggregate.ValueObject;
-using Flunt.Notifications;
-using Flunt.Validations;
 using System.Linq;
 
 namespace Domain.Cadastro.ProdutoAggregate

@@ -99,7 +99,6 @@ namespace Domain.Test.Agregates.EnderecoAgreggate
             result.Should().BeTrue();
         }
 
-
         [Theory]
         [InlineData(null)]
         [InlineData("a")]

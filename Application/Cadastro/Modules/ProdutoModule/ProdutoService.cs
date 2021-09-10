@@ -79,7 +79,7 @@ namespace Application.Cadastro.Modules.ProdutoModule
 
                 await _genericRepository.Delete(empresas);
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return _messageResult.Fail("Erro");
             }

@@ -6,7 +6,6 @@ namespace Application.Cadastro.Dto
 {
     public class MovimentoEstoqueDto
     {
-
         [Required]
         public TipoMovimento Tipo { get; set; }
 

@@ -12,7 +12,7 @@ namespace Infrastructure.Data.Context.Cadastro.Configuration
             builder.ToTable("Estoques");
 
             builder.HasKey(x => x.Id);
-            
+
             builder.OwnsOne(x => x.Quantidade, cnpj =>
             {
                 cnpj.Property(c => c.Valor).HasColumnName("Quantidade")

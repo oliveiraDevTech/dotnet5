@@ -31,7 +31,6 @@ namespace Api.Controllers
             }
 
             return Ok(retorno);
-
         }
 
         [HttpGet]

@@ -16,7 +16,7 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Insert(AdicionarEstoqueCommand estoqueCommand) 
+        public async Task<IActionResult> Insert(AdicionarEstoqueCommand estoqueCommand)
         {
             var retorno = await _mediator.Send(estoqueCommand);
 

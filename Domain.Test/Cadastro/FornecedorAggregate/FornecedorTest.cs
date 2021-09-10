@@ -56,6 +56,5 @@ namespace Domain.Test.Agregates.FornecedorAgreggate
             //Assert
             result.Should().BeTrue();
         }
-
     }
 }

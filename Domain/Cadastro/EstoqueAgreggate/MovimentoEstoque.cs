@@ -23,6 +23,7 @@ namespace Domain.Cadastro.EstoqueAgreggate
         {
             return new Contract<Notification>();
         }
+
         public virtual void Validate()
         {
             AddNotifications(Contract());

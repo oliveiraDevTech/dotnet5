@@ -15,7 +15,9 @@ namespace Domain.Cadastro.ProdutoAggregate.ValueObject
             Imposto = imposto;
         }
 
-        protected Preco(){}
+        protected Preco()
+        {
+        }
 
         public decimal Valor { get; private set; }
         public Imposto Imposto { get; private set; }
@@ -36,6 +38,7 @@ namespace Domain.Cadastro.ProdutoAggregate.ValueObject
 
                 case Moeda.Dolar:
                     return string.Format(CultureInfo.GetCultureInfo("en-US"), "US$ {0:#.###,##}", Valor);
+
                 default:
                     break;
             }

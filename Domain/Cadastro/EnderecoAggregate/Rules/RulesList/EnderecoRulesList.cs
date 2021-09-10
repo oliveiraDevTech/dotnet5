@@ -1,5 +1,4 @@
-﻿using Domain.Cadastro.EmpresaAgreggate;
-using Domain.Cadastro.EnderecoAggregate.Rules.Clauses;
+﻿using Domain.Cadastro.EnderecoAggregate.Rules.Clauses;
 using System.Collections.Generic;
 
 namespace Domain.Cadastro.EnderecoAggregate.Rules.RulesList

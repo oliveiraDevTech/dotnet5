@@ -6,7 +6,6 @@ namespace Application.Cadastro.Dto
 {
     public class EnderecoDto : IDto
     {
-
         [Required]
         public string Pais { get; set; }
 
@@ -24,7 +23,7 @@ namespace Application.Cadastro.Dto
 
         [Required]
         public int Numero { get; set; }
-        
+
         public string Complemento { get; set; }
         public string Referencia { get; set; }
     }

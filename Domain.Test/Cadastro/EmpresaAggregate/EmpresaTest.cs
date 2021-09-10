@@ -49,7 +49,7 @@ namespace Domain.Test.Agregattes.EmpresaAgreggates
         [InlineData("asdioasiodniasndaisndiuasndiuansdiuansdiunasiudnasuinduiasndiunasduinasudnasiudnasiundiuasndiuasnduinasdndaisndiuasndiuansdiuansdiunasiudnasuinduiasndiunasduinasudnasiudnasiundiuasndiuasnduinasd")]
         [Trait("Test Category", "UnityTest")]
         public void CriarEmpresa_Quando_NomeEmpresaInIsValido_Deve_Falhar(string nomeEmpresa)
-        {   
+        {
             //Arrange
             var sut = new MatrizBuilder().ComNomeEmpresa(nomeEmpresa).Build();
             //Act
@@ -72,4 +72,3 @@ namespace Domain.Test.Agregattes.EmpresaAgreggates
         }
     }
 }
-

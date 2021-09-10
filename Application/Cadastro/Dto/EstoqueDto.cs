@@ -1,5 +1,4 @@
-﻿using Domain.Cadastro.EstoqueAgreggate.ValueObjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 

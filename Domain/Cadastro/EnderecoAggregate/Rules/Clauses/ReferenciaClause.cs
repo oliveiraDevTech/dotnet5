@@ -1,5 +1,4 @@
-﻿using Domain.Cadastro.EmpresaAgreggate;
-using Flunt.Notifications;
+﻿using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Domain.Cadastro.EnderecoAggregate.Rules.Clauses
@@ -9,6 +8,7 @@ namespace Domain.Cadastro.EnderecoAggregate.Rules.Clauses
         private const string Mensagem = "Bairro não pode ser nulo";
         private const string Mensagem2 = "Bairro menor que 2";
         private const string Mensagem3 = "Bairro maior que 250";
+
         public override void Validar(Endereco endereco)
         {
             AddNotifications(new Contract<Notification>().IsNotNullOrEmpty(endereco.Referencia, nameof(endereco.Referencia), Mensagem)

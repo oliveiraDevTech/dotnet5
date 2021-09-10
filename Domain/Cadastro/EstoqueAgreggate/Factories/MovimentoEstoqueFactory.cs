@@ -21,7 +21,6 @@ namespace Domain.Cadastro.EstoqueAgreggate.Factories
             }
 
             return new MovimentoEstoque(TipoMovimento.Entrada, DateTime.Now);
-
         }
     }
 }

@@ -11,7 +11,9 @@ namespace Domain.Cadastro.EstoqueAgreggate
 {
     public class Estoque : Entity<long>, IEntity
     {
-        protected Estoque() { }
+        protected Estoque()
+        {
+        }
 
         public Estoque(Quantidade quantidade, Produto produto, Fornecedor fornecedor, IEnumerable<MovimentoEstoque> movimentos, DateTime fabricacao, DateTime? vencimento)
         {

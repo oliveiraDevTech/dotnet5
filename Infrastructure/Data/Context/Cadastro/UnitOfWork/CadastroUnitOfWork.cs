@@ -1,6 +1,4 @@
-﻿
-
-using Domain.Cadastro.EmpresaAgreggate;
+﻿using Domain.Cadastro.EmpresaAgreggate;
 using Domain.Cadastro.EnderecoAggregate;
 using Domain.Cadastro.EstoqueAgreggate;
 using Domain.Cadastro.FornecedorAgreggate;

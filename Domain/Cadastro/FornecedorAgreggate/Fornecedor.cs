@@ -16,7 +16,9 @@ namespace Domain.Cadastro.FornecedorAgreggate
             Validate();
         }
 
-        protected Fornecedor() { }
+        protected Fornecedor()
+        {
+        }
 
         public Empresa Empresa { get; private set; }
         public IEnumerable<Produto> Produtos { get; private set; }

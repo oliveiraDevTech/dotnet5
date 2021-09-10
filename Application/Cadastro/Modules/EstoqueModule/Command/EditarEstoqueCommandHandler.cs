@@ -45,7 +45,7 @@ namespace Application.Cadastro.Modules.EstoqueModule.Command
                     return _commandResult.Fail(request.EstoqueDto, "Erro");
 
                 var movimentoEstoque = _movimentoEstoqueFactory.Criar(estoqueAntigo.Quantidade.Valor, estoqueNovo.Quantidade.Valor, request.Perda);
-                
+
                 estoqueAntigo.ModifyByEntity(estoqueNovo);
 
                 await _cadastroUnitOfWork.EstoqueRepository.Update(estoqueAntigo);

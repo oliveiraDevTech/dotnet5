@@ -1,8 +1,6 @@
 ﻿using Core.Domain.Entity;
 using Core.Domain.Enumerator;
 using Domain.Cadastro.EnderecoAggregate.Rules.RulesList;
-using Flunt.Notifications;
-using Flunt.Validations;
 using System;
 using System.Linq;
 
@@ -10,7 +8,9 @@ namespace Domain.Cadastro.EnderecoAggregate
 {
     public class Endereco : Entity<Int64>, IEntity
     {
-        protected Endereco() { }
+        protected Endereco()
+        {
+        }
 
         public Endereco(string pais, Estado estado, string cidade, string bairro, string rua, int numero, string complemento, string referencia)
         {

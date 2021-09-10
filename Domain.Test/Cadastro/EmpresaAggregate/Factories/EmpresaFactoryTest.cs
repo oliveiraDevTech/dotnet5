@@ -1,12 +1,4 @@
-﻿using Domain.Cadastro.EmpresaAgreggate;
-using Domain.Cadastro.EmpresaAgreggate.Enumerators;
-using Domain.Cadastro.EmpresaAgreggate.Factories;
-using Domain.Cadastro.EmpresaAgreggate.ValueObjects;
-using Domain.Cadastro.EnderecoAggregate;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+﻿using Xunit;
 
 namespace Domain.Test.Cadastro.EmpresaAggregate.Factories
 {
@@ -24,6 +16,5 @@ namespace Domain.Test.Cadastro.EmpresaAggregate.Factories
 
             //var empresa = new EmpresaFactory();
         }
-
     }
 }

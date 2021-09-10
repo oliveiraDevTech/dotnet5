@@ -1,8 +1,4 @@
-﻿using Application.Cadastro.Dto;
-using AutoMapper;
-using Domain.Cadastro.EmpresaAgreggate;
-using Infrastructure.Builder.Cadastro;
-using Xunit;
+﻿using AutoMapper;
 
 namespace Application.Test.Cadastro.Dto
 {
@@ -11,9 +7,10 @@ namespace Application.Test.Cadastro.Dto
         private readonly IMapper _mapper;
 
         public EmpresaDtoMapTest(IMapper mapper)
-        {   
+        {
             _mapper = mapper;
         }
+
         //[Fact]
         //public void dadsasa()
         //{

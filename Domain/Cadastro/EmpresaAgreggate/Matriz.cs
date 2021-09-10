@@ -1,5 +1,5 @@
 ﻿using Domain.Cadastro.EmpresaAgreggate.Enumerators;
-using Domain.Cadastro.EmpresaAgreggate.Rules;
+using Domain.Cadastro.EmpresaAgreggate.Rules.RulesList;
 using Domain.Cadastro.EmpresaAgreggate.ValueObjects;
 using Domain.Cadastro.EnderecoAggregate;
 using System.Collections.Generic;
@@ -9,7 +9,9 @@ namespace Domain.Cadastro.EmpresaAgreggate
 {
     public class Matriz : Empresa
     {
-        protected Matriz() { }
+        protected Matriz()
+        {
+        }
 
         public IEnumerable<Filial> Filiais { get; protected set; }
 
@@ -17,6 +19,7 @@ namespace Domain.Cadastro.EmpresaAgreggate
         {
             Filiais = filiais;
         }
+
         public override void Validate()
         {
             base.Validate();

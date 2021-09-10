@@ -2,7 +2,7 @@
 using Flunt.Notifications;
 using System.Collections.Generic;
 
-namespace Domain.Cadastro.EmpresaAgreggate
+namespace Domain.Cadastro.EmpresaAgreggate.Rules
 {
     public abstract class MatrizRule : Notifiable<Notification>, IRule<Matriz>
     {

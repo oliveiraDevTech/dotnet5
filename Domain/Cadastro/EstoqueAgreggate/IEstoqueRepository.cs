@@ -8,6 +8,7 @@ namespace Domain.Cadastro.EstoqueAgreggate
         TDbcontext DbContext { get; }
 
         Task<int> Insert(Estoque estoque);
+
         Task<int> Update(Estoque estoque);
     }
 }
