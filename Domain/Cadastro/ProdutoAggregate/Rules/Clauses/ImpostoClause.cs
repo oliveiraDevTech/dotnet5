@@ -1,9 +1,10 @@
-﻿using Flunt.Notifications;
+﻿using Core.Domain;
+using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Domain.Cadastro.ProdutoAggregate.Rules.Clauses
 {
-    internal class ImpostoClause : ProdutoRule
+    internal class ImpostoClause : Rule<Produto>
     {
         private const string Mensagem = "O Imposto de Pis é inválido";
         private const string Mensagem2 = "O Imposto de Cofins é inválido";

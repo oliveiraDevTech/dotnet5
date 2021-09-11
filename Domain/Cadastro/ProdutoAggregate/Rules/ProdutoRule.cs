@@ -1,15 +1,23 @@
 ﻿using Core.Domain;
-using Flunt.Notifications;
+using Domain.Cadastro.ProdutoAggregate.Rules.Clauses;
 using System.Collections.Generic;
 
 namespace Domain.Cadastro.ProdutoAggregate.Rules
 {
-    public abstract class ProdutoRule : Notifiable<Notification>, IRule<Produto>
+    public static class ProdutoRule
     {
-        public void AddNotifications(IEnumerable<Notification> notifications) => base.AddNotifications((IReadOnlyCollection<Notification>)notifications);
-
-        public virtual bool DeveExecutar(Produto produto) => false;
-
-        public abstract void Validar(Produto produto);
+        public static List<Rule<Produto>> ObterRegras()
+        {
+            return new List<Rule<Produto>>
+            {
+                new CodigoProdutoClause(),
+                new DescricaoProdutoClause(),
+                new ImpostoClause(),
+                new MedidaClause(),
+                new NomeProdutoClause(),
+                new PesoClause(),
+                new ValorClause()
+            };
+        }
     }
 }

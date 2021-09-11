@@ -1,15 +1,17 @@
 ﻿using Core.Domain;
-using Flunt.Notifications;
+using Domain.Cadastro.EmpresaAgreggate.Rules.Clauses;
 using System.Collections.Generic;
 
 namespace Domain.Cadastro.EmpresaAgreggate.Rules
 {
-    public abstract class MatrizRule : Notifiable<Notification>, IRule<Matriz>
+    public static class MatrizRule
     {
-        public void AddNotifications(IEnumerable<Notification> notifications) => base.AddNotifications((IReadOnlyCollection<Notification>)notifications);
-
-        public virtual bool DeveExecutar(Matriz matriz) => false;
-
-        public abstract void Validar(Matriz matriz);
+        public static List<Rule<Matriz>> ObterRegras()
+        {
+            return new List<Rule<Matriz>>
+            {
+                new FiliaisClause()
+            };
+        }
     }
 }

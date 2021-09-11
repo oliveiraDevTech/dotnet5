@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Cadastro\EstoqueAgreggate\Rules\Clauses\" />
     <Folder Include="Cadastro\EstoqueAgreggate\Rules\RulesList\" />
   </ItemGroup>
 

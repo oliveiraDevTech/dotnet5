@@ -1,16 +1,15 @@
-﻿using Flunt.Notifications;
+﻿using Core.Domain;
+using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Domain.Cadastro.EmpresaAgreggate.Rules.Clauses
 {
-    public class FiliaisClause : MatrizRule
+    public class FiliaisClause : Rule<Matriz>
     {
-        private const string Mensagem = "Matriz da Filial não pode ser nulo";
-
         public override void Validar(Matriz matriz)
         {
             AddNotifications(new Contract<Notification>()
-                .IsNotNull(matriz.Filiais, nameof(matriz.Filiais), Mensagem));
+                .IsNotNull(matriz.Filiais, nameof(matriz.Filiais), "Matriz da Filial não pode ser nulo"));
         }
     }
 }

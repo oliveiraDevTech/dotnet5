@@ -1,9 +1,10 @@
-﻿using Flunt.Notifications;
+﻿using Core.Domain;
+using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Domain.Cadastro.ProdutoAggregate.Rules.Clauses
 {
-    internal class PesoClause : ProdutoRule
+    internal class PesoClause : Rule<Produto>
     {
         private const string Mensagem = "Valor do Peso é inválido";
 

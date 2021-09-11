@@ -1,6 +1,6 @@
 ﻿using Core.Domain.Entity;
 using Domain.Cadastro.ProdutoAggregate.Enumerators;
-using Domain.Cadastro.ProdutoAggregate.Rules.RulesList;
+using Domain.Cadastro.ProdutoAggregate.Rules;
 using Domain.Cadastro.ProdutoAggregate.ValueObject;
 using System.Linq;
 
@@ -36,7 +36,7 @@ namespace Domain.Cadastro.ProdutoAggregate
         public virtual void Validate()
         {
             {
-                foreach (var regra in ProdutoRulesList.ObterRegras().Where(x => x.DeveExecutar(this)))
+                foreach (var regra in ProdutoRule.ObterRegras().Where(x => x.DeveExecutar(this)))
                 {
                     regra.Validar(this);
                     AddNotifications(regra.Notifications);

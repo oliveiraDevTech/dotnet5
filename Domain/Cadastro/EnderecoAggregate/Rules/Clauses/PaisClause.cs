@@ -1,9 +1,10 @@
-﻿using Flunt.Notifications;
+﻿using Core.Domain;
+using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Domain.Cadastro.EnderecoAggregate.Rules.Clauses
 {
-    public class PaisClause : EnderecoRule
+    public class PaisClause : Rule<Endereco>
     {
         private const string Mensagem = "Pais inválido";
         private const string Mensagem2 = "Pais precisa ter no mínimo 2 caracteres";

@@ -1,9 +1,10 @@
-﻿using Flunt.Notifications;
+﻿using Core.Domain;
+using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Domain.Cadastro.EnderecoAggregate.Rules.Clauses
 {
-    public class ReferenciaClause : EnderecoRule
+    public class ReferenciaClause : Rule<Endereco>
     {
         private const string Mensagem = "Bairro não pode ser nulo";
         private const string Mensagem2 = "Bairro menor que 2";

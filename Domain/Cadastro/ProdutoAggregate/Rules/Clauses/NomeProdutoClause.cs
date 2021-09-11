@@ -1,9 +1,10 @@
-﻿using Flunt.Notifications;
+﻿using Core.Domain;
+using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Domain.Cadastro.ProdutoAggregate.Rules.Clauses
 {
-    public class NomeProdutoClause : ProdutoRule
+    public class NomeProdutoClause : Rule<Produto>
     {
         public override void Validar(Produto produto)
         {

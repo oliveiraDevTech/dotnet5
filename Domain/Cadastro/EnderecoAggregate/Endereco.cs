@@ -37,7 +37,7 @@ namespace Domain.Cadastro.EnderecoAggregate
 
         public virtual void Validate()
         {
-            foreach (var regra in EnderecoRulesList.ObterRegras().Where(x => x.DeveExecutar(this)))
+            foreach (var regra in EnderecoRule.ObterRegras().Where(x => x.DeveExecutar(this)))
             {
                 regra.Validar(this);
                 AddNotifications(regra.Notifications);

@@ -1,9 +1,10 @@
-﻿using Flunt.Notifications;
+﻿using Core.Domain;
+using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace Domain.Cadastro.EnderecoAggregate.Rules.Clauses
 {
-    public class NumeroClause : EnderecoRule
+    public class NumeroClause : Rule<Endereco>
     {
         private const string Mensagem = "Numero não pode ser 0";
 

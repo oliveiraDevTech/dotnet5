@@ -1,4 +1,5 @@
 ﻿using Core.Domain.Entity;
+using Domain.Cadastro.EstoqueAgreggate.Rules;
 using Domain.Cadastro.EstoqueAgreggate.ValueObjects;
 using Domain.Cadastro.FornecedorAgreggate;
 using Domain.Cadastro.ProdutoAggregate;
@@ -32,15 +33,14 @@ namespace Domain.Cadastro.EstoqueAgreggate
         public DateTime Fabricacao { get; private set; }
         public DateTime? Vencimento { get; private set; }
 
-        public static Contract<Notification> Contract()
-        {
-            return new Contract<Notification>();
-        }
-
         public virtual void Validate()
         {
-            AddNotifications(Contract());
-            AddNotifications(Quantidade.Contract());
+            foreach (var regra in EstoqueRule.ObterRegras())
+            {
+                regra.Validar(this);
+                AddNotifications(regra.Notifications);
+            }
+
             AddNotifications(Produto.Notifications);
             AddNotifications(Fornecedor.Notifications);
         }

@@ -1,15 +1,19 @@
 ﻿using Core.Domain;
-using Flunt.Notifications;
+using Domain.Cadastro.EmpresaAgreggate.Rules.Clauses;
 using System.Collections.Generic;
 
 namespace Domain.Cadastro.EmpresaAgreggate.Rules
 {
-    public abstract class EmpresaRule : Notifiable<Notification>, IRule<Empresa>
+    public static class EmpresaRule
     {
-        public void AddNotifications(IEnumerable<Notification> notifications) => base.AddNotifications((IReadOnlyCollection<Notification>)notifications);
-
-        public virtual bool DeveExecutar(Empresa empresa) => false;
-
-        public abstract void Validar(Empresa empresa);
+        public static List<Rule<Empresa>> ObterRegras()
+        {
+            return new List<Rule<Empresa>>
+            {
+                new NomeEmpresaClause(),
+                new RazaoSocialClause(),
+                new CnpjClause()
+            };
+        }
     }
 }

@@ -1,15 +1,17 @@
 ﻿using Core.Domain;
-using Flunt.Notifications;
+using Domain.Cadastro.EmpresaAgreggate.Rules.Clauses;
 using System.Collections.Generic;
 
 namespace Domain.Cadastro.EmpresaAgreggate.Rules
 {
-    public abstract class FilialRule : Notifiable<Notification>, IRule<Filial>
+    public static class FilialRule
     {
-        public void AddNotifications(IEnumerable<Notification> notifications) => base.AddNotifications((IReadOnlyCollection<Notification>)notifications);
-
-        public virtual bool DeveExecutar(Filial filial) => false;
-
-        public abstract void Validar(Filial filial);
+        public static List<Rule<Filial>> ObterRegras()
+        {
+            return new List<Rule<Filial>>
+            {
+                new MatrizClause()
+            };
+        }
     }
 }
