@@ -23,7 +23,9 @@ namespace Application.Cadastro.Modules.AcessoModule.Command
         {
             var tokenDto = new TokenDto();
 
-            tokenDto.Chave = GenerateNewToken(request);
+            var taskToken = new Task<string>(() => GenerateNewToken(request));
+
+            tokenDto.Chave = await taskToken;
 
             return _commandResult.Success(tokenDto);
         }
