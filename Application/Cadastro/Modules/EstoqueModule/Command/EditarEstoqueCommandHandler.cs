@@ -3,6 +3,7 @@ using AutoMapper;
 using Core.Application.Shared;
 using Core.Infrastructure.Data;
 using Domain.Cadastro.EstoqueAgreggate;
+using Domain.Cadastro.EstoqueAgreggate.Events;
 using Domain.Cadastro.EstoqueAgreggate.Factories;
 using Infrastructure.Data.Context.Cadastro;
 using Infrastructure.Data.Context.Cadastro.UnitOfWork;
@@ -20,14 +21,16 @@ namespace Application.Cadastro.Modules.EstoqueModule.Command
         private readonly IMovimentoEstoqueFactory _movimentoEstoqueFactory;
         private readonly IMapper _mapper;
         private readonly ICommandResult<EstoqueDto> _commandResult;
+        private readonly IMediator _mediator;
 
-        public EditarEstoqueCommandHandler(ICadastroUnitOfWork<CadastroContext> cadastroUnitOfWork, IGenericRepository<Estoque, long> genericRepository, IMovimentoEstoqueFactory movimentoEstoqueFactory, IMapper mapper, ICommandResult<EstoqueDto> commandResult)
+        public EditarEstoqueCommandHandler(ICadastroUnitOfWork<CadastroContext> cadastroUnitOfWork, IGenericRepository<Estoque, long> genericRepository, IMovimentoEstoqueFactory movimentoEstoqueFactory, IMapper mapper, ICommandResult<EstoqueDto> commandResult, IMediator mediator)
         {
             _cadastroUnitOfWork = cadastroUnitOfWork;
             _genericRepository = genericRepository;
             _movimentoEstoqueFactory = movimentoEstoqueFactory;
             _mapper = mapper;
             _commandResult = commandResult;
+            _mediator = mediator;
         }
 
         public async Task<ICommandResult<EstoqueDto>> Handle(EditarEstoqueCommand request, CancellationToken cancellationToken)
@@ -48,10 +51,14 @@ namespace Application.Cadastro.Modules.EstoqueModule.Command
 
                 estoqueAntigo.ModifyByEntity(estoqueNovo);
 
-                await _cadastroUnitOfWork.EstoqueRepository.Update(estoqueAntigo);
-                await _cadastroUnitOfWork.MovimentoEstoqueRepository.Insert(movimentoEstoque);
+                var update = _cadastroUnitOfWork.EstoqueRepository.Update(estoqueAntigo);
+                var insert = _cadastroUnitOfWork.MovimentoEstoqueRepository.Insert(movimentoEstoque);
+
+                await Task.WhenAll(update, insert);
 
                 _cadastroUnitOfWork.Commit();
+
+                await _mediator.Publish(new EstoqueAlterado("nome"));
 
                 return _commandResult.Success(request.EstoqueDto);
             }

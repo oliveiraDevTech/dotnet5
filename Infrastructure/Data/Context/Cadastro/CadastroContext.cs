@@ -19,7 +19,7 @@ namespace Infrastructure.Data.Context.Cadastro
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-35EEBDP;Initial Catalog=BaseDados;Trusted_Connection=True;User Id=sa;Password=123456;");
+            optionsBuilder.UseSqlServer(@"Server=localhost;Database=dbSystem;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

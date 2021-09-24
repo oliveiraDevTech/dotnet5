@@ -1,5 +1,6 @@
 ﻿using Application.Cadastro.Dto;
 using Application.Cadastro.Modules.EmpresaModule.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace Api.Controllers
 {
     [Route("v1/empresa")]
     [ApiController]
+    [Authorize]
     public class EmpresaController : ControllerBase, IGenericController<EmpresaDto, long>
     {
         private readonly IEmpresaService _empresaService;

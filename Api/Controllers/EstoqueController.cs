@@ -1,4 +1,5 @@
 ﻿using Application.Cadastro.Modules.EstoqueModule.Command;
+using Domain.Cadastro.EstoqueAgreggate.Events;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(AdicionarEstoqueCommand estoqueCommand)
+        public async Task<IActionResult> Update(EditarEstoqueCommand estoqueCommand)
         {
             var retorno = await _mediator.Send(estoqueCommand);
 

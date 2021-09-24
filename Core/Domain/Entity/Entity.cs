@@ -1,4 +1,5 @@
 ﻿using Flunt.Notifications;
+using MediatR;
 using System;
 using System.Collections.Generic;
 
@@ -13,11 +14,18 @@ namespace Core.Domain.Entity
         protected Entity(TId id) => Id = id;
 
         public virtual TId Id { get; protected set; }
-        public virtual ICollection<IDomainEvent> Events { get; }
+        //public virtual ICollection<INotification> Events { get; private set; }
 
-        public virtual void AddEvent<T>(T args) where T : IDomainEvent
-        {
-        }
+        //public virtual void AddEvent<T>(T args) where T : INotification
+        //{
+        //    Events = Events ?? new List<INotification>();
+        //    Events.Add(args);
+        //}
+
+        //public virtual void RemoveEvent<T>(T args) where T : INotification
+        //{
+        //    Events?.Remove(args);
+        //}
 
         public virtual bool Equals(Entity<TId> other) => this.Equals(other);
 
@@ -38,7 +46,7 @@ namespace Core.Domain.Entity
             foreach (var property in this.GetType().GetProperties())
             {
                 if (property.Name != Id.GetType().Name
-                    && property.Name != Events.GetType().Name)
+                    && property.Name != Id.GetType().Name)
                 {
                     var valueModify = entityModify.GetType().GetProperty(property.Name).GetValue(entityModify);
 
