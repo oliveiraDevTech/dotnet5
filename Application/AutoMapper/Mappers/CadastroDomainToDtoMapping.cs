@@ -6,7 +6,7 @@ using Domain.Cadastro.EstoqueAgreggate;
 using Domain.Cadastro.FornecedorAgreggate;
 using Domain.Cadastro.ProdutoAggregate;
 
-namespace Application.Cadastro.Mappers
+namespace Application.AutoMapper.Mappers
 {
     public class CadastroDomainToDtoMapping : Profile
     {

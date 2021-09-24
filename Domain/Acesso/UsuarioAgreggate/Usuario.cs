@@ -12,10 +12,9 @@ namespace Domain.Acesso.UsuarioAgreggate
 {
     public class Usuario : Entity<long>, IEntity
     {
-        public Usuario(long id, string nome, Senha senha, string role)
+        public Usuario(string nome, Senha senha, string role)
         {
-            Id = id;
-            Nome = nome;
+            Login = nome;
             Senha = senha;
             Role = role;
         }
@@ -25,7 +24,7 @@ namespace Domain.Acesso.UsuarioAgreggate
         }
 
         public Senha Senha { get; private set; }
-        public string Nome { get; private set; }
+        public string Login { get; private set; }
         public string Role { get; private set; }
 
         public void Validate()

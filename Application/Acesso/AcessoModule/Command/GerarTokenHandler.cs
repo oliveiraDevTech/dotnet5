@@ -38,7 +38,7 @@ namespace Application.Cadastro.Modules.AcessoModule.Command
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, request.Usuario.Nome),
+                    new Claim(ClaimTypes.Name, request.Usuario.Login),
                     new Claim(ClaimTypes.Role, request.Usuario.Role)
                 }),
                 Expires = TokenConfigurations.DateExpire,

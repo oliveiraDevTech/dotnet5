@@ -12,7 +12,7 @@ namespace Infrastructure.Data.Context.Cadastro.Configuration.Acesso
 
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Nome)
+            builder.Property(x => x.Login)
                .HasColumnName("Nome")
                .IsRequired()
                .HasMaxLength(250);

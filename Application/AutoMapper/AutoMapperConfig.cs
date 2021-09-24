@@ -1,4 +1,4 @@
-﻿using Application.Cadastro.Mappers;
+﻿using Application.AutoMapper.Mappers;
 using AutoMapper;
 using System.Collections.Generic;
 
@@ -10,7 +10,8 @@ namespace Application.AutoMapper
         {
             return new Profile[]
             {
-                new CadastroDomainToDtoMapping()
+                new CadastroDomainToDtoMapping(),
+                new AcessoDomainToDtoMapping()
             };
         }
     }
