@@ -13,31 +13,28 @@ namespace Application.Cadastro.Modules.AcessoModule.Command
     public class GerarTokenHandler : IRequestHandler<GerarToken, ICommandResult<TokenDto>>
     {
         private readonly ICommandResult<TokenDto> _commandResult;
+        private TokenDto _tokenDto;
+        private JwtSecurityTokenHandler _jwtSecurityTokenHandler;
 
         public GerarTokenHandler(ICommandResult<TokenDto> commandResult)
         {
             _commandResult = commandResult;
+            _tokenDto = new TokenDto();
+            _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
         }
 
         public async Task<ICommandResult<TokenDto>> Handle(GerarToken request, CancellationToken cancellationToken)
         {
-            var tokenDto = new TokenDto();
-
             var taskToken = new Task<string>(() => GenerateNewToken(request));
 
-            tokenDto.Chave = await taskToken;
+            _tokenDto.Chave = await taskToken;
 
-            return _commandResult.Success(tokenDto);
+            return _commandResult.Success(_tokenDto);
         }
 
         private string GenerateNewToken(GerarToken request)
         {
-            JwtSecurityTokenHandler tokenHandler;
-            SecurityTokenDescriptor tokenDescriptor;
-
-            tokenHandler = new JwtSecurityTokenHandler();
-            var key = TokenConfigurations.Enconding;
-            tokenDescriptor = new SecurityTokenDescriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
@@ -45,12 +42,12 @@ namespace Application.Cadastro.Modules.AcessoModule.Command
                     new Claim(ClaimTypes.Role, request.Usuario.Role)
                 }),
                 Expires = TokenConfigurations.DateExpire,
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(TokenConfigurations.Enconding), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var token = _jwtSecurityTokenHandler.CreateToken(tokenDescriptor);
 
-            return tokenHandler.WriteToken(token);
+            return _jwtSecurityTokenHandler.WriteToken(token);
         }
     }
 }
