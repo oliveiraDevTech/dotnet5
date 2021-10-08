@@ -8,7 +8,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Linq;
-using System.Text;
+using MediatR;
+using Application.Acesso.AcessoModule.Services;
+using AutoMapper;
+using Domain.Acesso.UsuarioAgreggate;
+using Infrastructure.Data.Context.Cadastro;
+using Infrastructure.Data.Context.Cadastro.Repository.Acesso;
 
 namespace Api
 {
@@ -24,12 +29,17 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
+            services.AddMediatR(typeof(Startup));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
+
+            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IUsuarioRepository<AcessoContext>, UsuarioRepository>();
 
             services.AddAuthentication(x =>
             {

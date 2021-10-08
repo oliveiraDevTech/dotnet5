@@ -62,6 +62,8 @@ namespace Api.Controllers
         }
 
         [HttpPost]
+        [Route("create")]
+
         public async Task<IActionResult> Create(IEnumerable<EmpresaDto> empresasDto)
         {
             var retorno = await _empresaService.Create(empresasDto);

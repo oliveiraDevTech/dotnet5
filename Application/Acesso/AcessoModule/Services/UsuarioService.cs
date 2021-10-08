@@ -1,16 +1,17 @@
 ﻿using Application.Cadastro.Dto.Acesso;
 using AutoMapper;
 using Domain.Acesso.UsuarioAgreggate;
+using Infrastructure.Data.Context.Cadastro;
 using System.Threading.Tasks;
 
 namespace Application.Acesso.AcessoModule.Services
 {
-    internal class UsuarioService : IUsuarioService
+    public class UsuarioService : IUsuarioService
     {
         private readonly IMapper _mapper;
-        private readonly IUsuarioRepository<Usuario> _usuarioRepository;
+        private readonly IUsuarioRepository<AcessoContext> _usuarioRepository;
 
-        public UsuarioService(IMapper mapper, IUsuarioRepository<Usuario> usuarioRepository)
+        public UsuarioService(IMapper mapper, IUsuarioRepository<AcessoContext> usuarioRepository)
         {
             _mapper = mapper;
             _usuarioRepository = usuarioRepository;

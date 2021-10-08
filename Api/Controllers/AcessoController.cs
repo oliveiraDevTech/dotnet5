@@ -16,12 +16,14 @@ namespace Api.Controllers
         private readonly IUsuarioService _usuarioService;
 
         public AcessoController(IMediator mediator, IUsuarioService usuarioService)
+
         {
             _mediator = mediator;
             _usuarioService = usuarioService;
         }
 
         [HttpPost]
+        [Route("validar")]
         [AllowAnonymous]
         public async Task<IActionResult> ValidarUsuario(UsuarioDto usuarioDto)
         {
@@ -35,6 +37,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [Route("token")]
         public async Task<IActionResult> GerarToken(GerarToken gerarToken)
         {
             var retorno = await _mediator.Send(gerarToken);
